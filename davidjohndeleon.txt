@@ -1,0 +1,36 @@
+
+DROP DATABASE midtermnidabid;
+CREATE DATABASE midtermnidabid;
+
+USE midtermnidabid;
+
+CREATE TABLE student_info(
+    studno int PRIMARY KEY AUTO_INCREMENT,
+    studfname varchar(25),
+    studlname varchar(25),
+    major varchar(25),
+    gender ENUM('F','M') DEFAULT 'F',
+    homeaddress varchar(25),
+    grade double
+);
+CREATE TABLE grades(
+    studno int,
+    grade double ,
+    subjcode int PRIMARY KEY AUTO_INCREMENT,
+    CONSTRAINT FKstudent_info FOREIGN KEY (studno) REFERENCES student_info(studno)
+); 
+CREATE TABLE subjects(
+	id int PRIMARY KEY AUTO_INCREMENT,
+	subjcode int,
+    subjdescr varchar (50) ,
+    CONSTRAINT FKgrades FOREIGN KEY (subjcode) REFERENCES grades (subjcode)
+);
+
+
+
+
+
+
+
+
+
